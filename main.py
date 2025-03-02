@@ -14,7 +14,7 @@ async def status():
     global now_status
 
     if now_status == 0:
-        data1 = discord.Activity(type=discord.ActivityType.playing, name="Lofi&Music")
+        data1 = discord.Activity(type=discord.ActivityType.playing, name="BGM & 24/7")
         now_status = 1
     elif now_status == 1:
         data1 = discord.Activity(type=discord.ActivityType.listening, name="Music Custom Status")
@@ -34,9 +34,28 @@ async def main(bot:commands.Bot):
         except Exception as e:
             print(f"\033[30m| コマンドの同期でエラーが発生しました。\n{e}\033[0m")
 
-    for cog in listdir("cogs"):
-        if cog.endswith(".py"):
-            await bot.load_extension(f"cogs.{cog[:-3]}")
+    # for cog in listdir("cogs"):
+    #     if cog.endswith(".py"):
+    #         await bot.load_extension(f"cogs.{cog[:-3]}")
+
+    # @bot.event
+    # async def on_member_join(member:discord.Member):
+    #     embeds=[
+    #         discord.Embed(
+    #             title="Welcome to Server!",
+    #             description=f"""Hello <@{member.id}> !\nWe can listen 24/7 Music in This Server!\nAnd There is Custom Playlist!\nIn <#1345574641736876062> ,\nApply for Your Favourite Songs to Custom Playlist!\n\nPlease Read <#1345223384157392926> ,\nAnd Verify <#1345231502593622066> !""",
+    #             colour=0xffff00
+    #         ),
+    #         discord.Embed(
+    #             title="サーバーへようこそ！",
+    #             description=f"""ようこそ <@{member.id}> !\nこのサーバーでは24時間365日好きなジャンルのBGMを聴くことができます！\nそしてカスタムプレイリストもあります！\n<#1345574641736876062>で\nあなたが好きな曲を登録してください！\n\n<#1345223384157392926> を読んで、\n<#1345231502593622066> で認証してください！""",
+    #             colour=0xffff00
+    #         )
+    #     ]
+    #     embeds[0].set_author(name="EN")
+    #     embeds[1].set_author(name="JP")
+    #     print(embeds)
+    #     await bot.get_channel(1345231520507363370).send(embeds=embeds)
 
     # Bot Start
     await bot.start(getenv("BOT_TOKEN"))
